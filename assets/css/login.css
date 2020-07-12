@@ -32,17 +32,17 @@ body {
 
 /* 先让注册的盒子隐藏 */
 
-#register {
+
+/* #register {
     display: none;
-}
+} */
 
 
 /* 让注册的盒子隐藏 */
 
-
-/* #login {
+#login {
     display: none;
-} */
+}
 
 .title {
     height: 60px;

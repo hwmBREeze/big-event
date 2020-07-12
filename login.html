@@ -72,18 +72,18 @@
             <!-- 第一行 用户名 -->
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-username"></i>
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
             </div>
 
             <!-- 第二行 密码 -->
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-password"></i>
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <input type="text" name="password" required lay-verify="required|len" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
             <!-- 第三行 确认密码 -->
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-password"></i>
-                <input type="text" name="title" required lay-verify="required" placeholder="再次确认密码" autocomplete="off" class="layui-input">
+                <input type="text" required lay-verify="required|same" placeholder="再次确认密码" autocomplete="off" class="layui-input">
             </div>
 
             <!-- 第四行 注册 -->
@@ -93,7 +93,7 @@
 
             <!-- 第五行  去登录 -->
             <div class="layui-form-item ">
-                <a href="javascript:;" id="goto-login">去登录</a>
+                <a href="javascript:;" id="goto-login">已有账号,去登录</a>
             </div>
 
         </form>
