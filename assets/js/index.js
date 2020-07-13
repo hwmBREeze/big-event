@@ -5,7 +5,7 @@ function getUserInfo() {
         url: '/my/userinfo',
         success: function(res) {
             if (res.status === 0) {
-                // console.log(res);
+                console.log(res);
 
                 //设置欢迎语
                 //有昵称，优先使用昵称，没有昵称，则使用账号
