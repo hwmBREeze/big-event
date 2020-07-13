@@ -1,7 +1,7 @@
 <script>
     //写在上面的目的，进入页面，马上判断
     //判断本地存储中的token是否存在，如果不存在，则表示没有登录，则跳转到login.html
-    if (localStorage.getItem('token') === 'null') {
+    if (localStorage.getItem('token') === null) {
         location.href = '/login.html';
     }
 </script>

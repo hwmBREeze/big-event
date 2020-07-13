@@ -14,7 +14,7 @@ $.ajaxPrefilter(function(options) {
             }
         }
         //统一配置headers
-    options.header = {
+    options.headers = {
         'Authorization': localStorage.getItem('token'),
     }
 });
