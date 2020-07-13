@@ -18,7 +18,8 @@ $('#register form').on('submit', function(e) {
     // console.log(data);
     $.ajax({
         type: 'POST',
-        url: 'http://www.liulongbin.top:3007/api/reguser',
+        // url: 'http://www.liulongbin.top:3007/api/reguser',
+        url: '/api/reguser',
         data: data,
         success: function(res) {
             //无论成功失败都提示
@@ -73,10 +74,11 @@ $('#login form').on('submit', function(e) {
     // console.log(data);
     $.ajax({
         type: 'POST',
-        url: 'http://www.liulongbin.top:3007/api/login',
+        // url: 'http://www.liulongbin.top:3007/api/login',
+        url: '/api/login',
         data: data,
         success: function(res) {
-            console.log(res);
+            // console.log(res);
             //无论成功失败，都提示
             layer.msg(res.message);
             //如果登录成功,跳转到首页

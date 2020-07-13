@@ -13,7 +13,7 @@ $.ajaxPrefilter(function(options) {
                 location.href = '/login.html';
             }
         }
-        //统一配置headers
+        //统一配置headers请求头，携带token
     options.headers = {
         'Authorization': localStorage.getItem('token'),
     }
