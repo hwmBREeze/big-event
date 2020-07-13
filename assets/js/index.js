@@ -32,3 +32,15 @@ function getUserInfo() {
     });
 };
 getUserInfo();
+
+
+// ----------------完成退出功能-----------------------
+//确定退出，1.删除token  2.跳转到login.html页面
+$('#logout').click(function() {
+    layer.confirm('确定退出吗？', { icon: 3, title: '提示' }, function(index) {
+        localStorage.removeItem('token');
+        location.href = '/login.html';
+        //关闭窗口,这里可以不写，因为都跳转了
+        // layer.close(index);
+    });
+});
