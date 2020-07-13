@@ -11,6 +11,9 @@ $('#goto-register').click(function() {
 //整体思路：把账号密码提交给接口
 $('#register form').on('submit', function(e) {
     e.preventDefault();
+    // 使用serialize，它是根据input的name属性获取值的
+    //接口要求，请求参数只有username和password
+    //所以，设置用户名的name=username，密码的name=password，重复密码的name属性去掉
     var data = $(this).serialize();
     // console.log(data);
     $.ajax({
@@ -52,9 +55,39 @@ form.verify({
     same: function(val) {
         //这个验证规则，重复密码使用，所以val表示重复密码
         //获取密码
-        var pwd = $('input[name=password]').val();
+        var pwd = $('#register input[name=password]').val();
         if (pwd !== val) {
             return '两次密码不一致';
         }
     }
+});
+
+
+// --------------------登录功能--------------------------
+//监听表单的提交事件，阻止默认行为，收集表单数据，ajax提交给接口
+$('#login form').on('submit', function(e) {
+    e.preventDefault();
+    //做到这一步，必须检查input的name属性
+    //检查input的name属性值，是否和接口要求的请求参数名一致，必须一致才行
+    var data = $(this).serialize();
+    // console.log(data);
+    $.ajax({
+        type: 'POST',
+        url: 'http://www.liulongbin.top:3007/api/login',
+        data: data,
+        success: function(res) {
+            console.log(res);
+            //无论成功失败，都提示
+            layer.msg(res.message);
+            //如果登录成功,跳转到首页
+            if (res.status === 0) {
+                //把token保存到本地存储中
+                localStorage.setItem('token', res.token);
+                //如果是服务器环境，/ 表示服务器根文件夹big-event
+                //表示跳转到根目录下的index.html
+                location.href = '/index.html';
+
+            }
+        }
+    })
 });

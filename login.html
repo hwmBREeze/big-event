@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>hwm的大事件</title>
     <!-- 
     因为是模拟服务器环境，big-event它就是服务器根文件夹
     如果是服务器环境，/ 表示服务器根文件夹
@@ -37,13 +37,13 @@
             <!-- 第一行 用户名 -->
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-username"></i>
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
             </div>
 
             <!-- 第二行 密码 -->
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-password"></i>
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <input type="text" name="password" required lay-verify="required|len" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
 
             <!-- 第三行 按钮 -->
