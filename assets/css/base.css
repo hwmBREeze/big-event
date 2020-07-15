@@ -1,0 +1,10 @@
+body {
+    background-color: #f2f3f5;
+}
+
+
+/* 让卡片面板有外边距 */
+
+.layui-card {
+    margin: 15px;
+}
