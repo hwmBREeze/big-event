@@ -36,6 +36,7 @@ $('form').on('submit', function(e) {
                 //修改成功，马上更新index.html的欢迎语
                 //调用index.html页面的getUserInfo()即可
                 //window表示当前窗口，parent父亲的意思，组合到一起，表示调用父页面的函数
+                //因为当前userinfo页面是在iframe里面的，是index页面中的一个子页面，所以你要调用index.js中的方法，要用window.parent
                 window.parent.getUserInfo();
                 renderUser();
             }
@@ -43,7 +44,7 @@ $('form').on('submit', function(e) {
     })
 });
 
-// ------------重置表单---------------
+// ------------重置表单-----------------------
 $('button:contains("重置")').click(function(e) {
     e.preventDefault();
     renderUser(); //调用renderUser(),为表单重新赋值，就可以恢复成原样

@@ -17,7 +17,7 @@ function getUserInfo() {
                 if (res.data.user_pic) {
                     //说明有图片
                     $('.layui-nav-img').attr('src', res.data.user_pic).show();
-                    $('.text-avatar'), hide();
+                    $('.text-avatar').hide();
                 } else {
                     //说明没有图片
                     var firstWord = name.substr(0, 1).toUpperCase(); //截取对中文也有效;中文转大写不会报错
