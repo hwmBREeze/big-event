@@ -17,3 +17,11 @@ function renderArticle() {
     })
 };
 renderArticle();
+
+// -----------------分页---------------------------
+// 第一部分：实现简单的效果（把分页页码实现）
+//第二部分：和数据结合到一起
+function renderPage() {
+
+}
+renderPage();
