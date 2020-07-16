@@ -1,6 +1,7 @@
 $.ajaxPrefilter(function(options) {
     //更改url
-    options.url = 'http://www.liulongbin.top:3007' + options.url;
+    // options.url = 'http://www.liulongbin.top:3007' + options.url;
+    options.url = 'http://ajax.frontend.itheima.net' + options.url;
 
     //统一配置complete
     //表示ajax请求结束之后（无论成功还是失败），都会执行complete函数

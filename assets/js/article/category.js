@@ -139,10 +139,4 @@ $(function() {
     })
 
 
-})
-
-// var timer = setTimeout(function () {
-
-// }, 1000);
-
-// clearTimeout(timer);
+});
