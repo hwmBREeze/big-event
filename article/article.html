@@ -15,25 +15,21 @@
         <div class="layui-card-body">
             <!-- 内容区start -->
             <!-- 1.表单搜索区start -->
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="search">
                 <div class="layui-form-item">
                     <div class="layui-inline">
 
                         <div class="layui-input-inline" style="width: 200px;">
-                            <select name="city" lay-verify="">
-                                <option value="">所有分类</option>
-                                <option value="010">北京</option>
-                                <option value="021">上海</option>
-                                <option value="0571">杭州</option>
+                            <select lay-verify="" id="category">
+
                             </select>
                         </div>
 
                         <div class="layui-input-inline" style="width: 200px;">
-                            <select name="city" lay-verify="">
+                            <select lay-verify="" id="state">
                                 <option value="">所有状态</option>
-                                <option value="010">北京</option>
-                                <option value="021">上海</option>
-                                <option value="0571">杭州</option>
+                                <option value="已发布">已发布</option>
+                                <option value="草稿">草稿</option>
                             </select>
                         </div>
                     </div>
@@ -67,16 +63,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>11</td>
-                        <td>22</td>
-                        <td>2016-11-29</td>
-                        <td>已发布</td>
-                        <td>
-                            <button data-id="{{val.Id}}" data-name="{{val.name}}" data-alias="{{val.alias}}" type="button" class="layui-btn layui-btn-xs edit">编辑</button>
-                            <button type="button" class="layui-btn layui-btn-xs layui-btn-danger delete" data-id="{{val.Id}}">删除</button>
-                        </td>
-                    </tr> -->
 
                 </tbody>
             </table>
@@ -98,8 +84,8 @@
         {{each data val}}
         <tr>
             <td>{{val.title}}</td>
-            <td>{{val.cata_name}}</td>
-            <td>{{val.pub_date}}</td>
+            <td>{{val.cate_name}}</td>
+            <td>{{val.pub_date|formatDate}}</td>
             <td>{{val.state}}</td>
             <td>
                 <button data-id="{{val.Id}}" data-name="{{val.name}}" data-alias="{{val.alias}}" type="button" class="layui-btn layui-btn-xs edit">编辑</button>
@@ -109,6 +95,15 @@
         {{/each}}
     </script>
     <!-- 文章列表模板 end -->
+
+    <!-- 分类的模版start -->
+    <script type="text/html" id="tpl-category">
+        <option value="">全部分类</option>
+        {{each data val}}
+        <option value="{{val.Id}}">{{val.name}}</option>
+        {{/each}}
+    </script>
+    <!-- 分类的模版end -->
 
     <script src="/assets/lib/jquery.js"></script>
     <script src="/assets/lib/template-web.js"></script>
