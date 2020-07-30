@@ -17,7 +17,7 @@ function renderArticle() {
     $.ajax({
         url: '/my/article/list',
         data: data,
-        success: function(res) {
+        success: function (res) {
             console.log(res); //和分类不一样，自己只能看到自己发布的文章
             //把结果渲染到页面中
             var html = template('tpl-article', res);
@@ -44,18 +44,18 @@ function renderPage(t) {
         // prev: '<<',//自定义上一页
         limits: [2, 3, 5, 7],
         layout: ['limit', 'prev', 'page', 'next', 'skip', 'count'], //skip快捷跳页区域
-        jump: function(obj, first) {
-                // console.log(first); //laypage.render首次调用时first=true，切换页码时first=undefined
-                // console.log(obj);
-                if (first === undefined) {
-                    //修改ajax请求参数
-                    data.pagenum = obj.curr;
-                    data.pagesize = obj.limit;
-                    //重新渲染页面
-                    renderArticle();
-                }
+        jump: function (obj, first) {
+            // console.log(first); //laypage.render首次调用时first=true，切换页码时first=undefined
+            // console.log(obj);
+            if (first === undefined) {
+                //修改ajax请求参数
+                data.pagenum = obj.curr;
+                data.pagesize = obj.limit;
+                //重新渲染页面
+                renderArticle();
+            }
 
-            } //jump,它是切换分页时的回调函数，切换页码时，会触发这个函数,刷新页面也会触发这个函数
+        } //jump,它是切换分页时的回调函数，切换页码时，会触发这个函数,刷新页面也会触发这个函数
 
     });
 }
@@ -65,7 +65,7 @@ function renderPage(t) {
 // --------------获取所有分类--------------------------
 $.ajax({
     url: '/my/article/cates',
-    success: function(res) {
+    success: function (res) {
         console.log(res);
         var html = template('tpl-category', res);
         $('#category').html(html);
@@ -76,7 +76,7 @@ $.ajax({
 
 // ---------完成筛选--------------------------
 //搜索区的表单提交了，阻止默认行为；获取分类的cate_Id和状态，改变ajax请求参数，调用renderArticle()重新渲染页面
-$('#search').on('submit', function(e) {
+$('#search').on('submit', function (e) {
     e.preventDefault();
     var cate_id = $('#category').val();
     var state = $('#state').val();
@@ -96,7 +96,7 @@ $('#search').on('submit', function(e) {
 
 
 // ----------定义过滤器函数，处理时间------------------------
-template.defaults.imports.formatDate = function(val) {
+template.defaults.imports.formatDate = function (val) {
     //形参指原本要处理的值
     var d = new Date(val);
     var year = d.getFullYear();
@@ -116,18 +116,21 @@ template.defaults.imports.formatDate = function(val) {
 
 // -------------------完成文章的删除功能--------------------
 // 找到删除按钮，注册单击事件，询问是否要删除，ajax发送请求，完成删除
-$('body').on('click', '.delete', function() {
+//注意：要用事件委托
+//事件处理函数不要用箭头函数，因为this指向的问题
+$('body').on('click', '.delete', function () {
 
-    // 在询问之前，先获取id
+    // 在询问之前，先获取id  因为this的指向问题
     var id = $(this).attr('data-id');
 
-    layer.confirm('确定删除吗？你好狠！', { icon: 2, title: '提示' }, function(index) {
+    layer.confirm('确定删除吗？你好狠！', { icon: 2, title: '提示' }, function (index) {
         // do something
+        //发送ajax请求，完成删除
         $.ajax({
             url: '/my/article/delete/' + id, // 新型的传参方式，只需要把接口中的:id换成实际的数字即可
             // url: '/my/article/deletecate/1' // 删除id为1的分类
-            // url: '/my/article/deletecate/3' // 删除id为3的分类
-            success: function(res) {
+            success: function (res) {
+                //无论成功失败都给出提示
                 layer.msg(res.message);
                 if (res.status === 0) {
                     // 删除成功，重新渲染

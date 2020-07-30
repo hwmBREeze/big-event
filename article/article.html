@@ -88,7 +88,7 @@
             <td>{{val.pub_date|formatDate}}</td>
             <td>{{val.state}}</td>
             <td>
-                <button data-id="{{val.Id}}" data-name="{{val.name}}" data-alias="{{val.alias}}" type="button" class="layui-btn layui-btn-xs edit">编辑</button>
+                <a data-id="{{val.Id}}" data-name="{{val.name}}" data-alias="{{val.alias}}" href="/article/edit.html?id={{val.Id}}" target="ifm" class="layui-btn layui-btn-xs edit">编辑</a>
                 <button type="button" class="layui-btn layui-btn-xs layui-btn-danger delete" data-id="{{val.Id}}">删除</button>
             </td>
         </tr>
